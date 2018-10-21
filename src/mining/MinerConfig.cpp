@@ -673,6 +673,7 @@ Burst::ReadConfigFileResult Burst::MinerConfig::readConfigFile(const std::string
 			urlsObj->set("proxy", getProxyFullUrl());
 			miningObj->set("urls", urlsObj);
 		}
+		addUserAgent = getOrAdd(miningObj, "addUserAgent", true);
 
 		// plots
 		{
@@ -1165,6 +1166,12 @@ Burst::Url Burst::MinerConfig::getMiningInfoUrl() const
 {
 	Poco::Mutex::ScopedLock lock(mutex_);
 	return urlMiningInfo_;
+}
+
+const bool Burst::MinerConfig::getAddUserAgent() const
+{
+	Poco::Mutex::ScopedLock lock(mutex_);
+	return addUserAgent;
 }
 
 const std::vector<Burst::Url>& Burst::MinerConfig::getMiningInfoUrlAlt() const

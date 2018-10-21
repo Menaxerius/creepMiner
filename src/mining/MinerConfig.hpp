@@ -167,6 +167,7 @@ namespace Burst
 		Url getPoolUrl() const;
 		const std::vector<Url>& getPoolUrlAlt() const;
 		Url getMiningInfoUrl() const;
+		const bool getAddUserAgent() const;
 		const std::vector<Url>& getMiningInfoUrlAlt() const;
 		Url getWalletUrl() const;
 		std::string getProxyFullUrl() const;
@@ -301,6 +302,7 @@ namespace Burst
 		std::string proxyIp_{};
 		Poco::UInt16 proxyPort_{};
 		Passphrase proxyUser_{}, proxyPassword_{};
+		bool addUserAgent = true;
 		bool startServer_ = true;
 		double targetDlFactor_ = 1.0;
 		double deadlinePerformanceFac_ = 1.0;

@@ -58,7 +58,9 @@ Burst::Response Burst::Request::send(Poco::Net::HTTPRequest& request)
 	if (!canSend())
 		return {nullptr};
 
-	request.set("User-Agent", Settings::project.nameAndVersion);
+    if (MinerConfig::getConfig().getAddUserAgent()) {
+        request.set("User-Agent", Settings::project.nameAndVersion);
+    }
 
 	try
 	{
