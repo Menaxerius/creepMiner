@@ -540,7 +540,6 @@ bool Burst::Miner::getMiningInfo(const Url& url)
 		Request request(std::move(miningInfoSession_));
 
 		HTTPRequest requestData { HTTPRequest::HTTP_POST, "/burst?requestType=getMiningInfo", HTTPRequest::HTTP_1_1 };
-		requestData.setKeepAlive(true);
 		requestData.setContentLength64(0);
 
 		auto response = request.send(requestData);
